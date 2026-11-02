@@ -15,7 +15,7 @@ export const services: Service[] = [
         name: "Maintenance",
         description:
             "Seasonal tune-ups to keep your system efficient and avoid costly breakdowns.",
-        image: "/images/maintenance.jpg",
+        image: "/images/maintenance.png",
         duration: "1 hour",
     },
     {
@@ -31,7 +31,7 @@ export const services: Service[] = [
         name: "Diagnostics",
         description:
             "Full system inspection to find the exact cause of cooling or heating problems.",
-        image: "/images/diagnostics.jpg",
+        image: "/images/diagnostics.webp",
         duration: "1 hour",
     },
     {
@@ -39,7 +39,7 @@ export const services: Service[] = [
         name: "Installations",
         description:
             "Professional installation of AC, furnaces, heat pumps, and thermostats.",
-        image: "/images/installations.jpg",
+        image: "/images/installations.webp",
         duration: "4-8 hours",
     },
 ];
