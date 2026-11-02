@@ -23,6 +23,7 @@ import {
     useAppointments,
     type Appointment,
 } from "@/lib/appointments";
+import { formatPhone } from "@/lib/business";
 import { formatDateLong, formatTime, toDateKey } from "@/lib/dates";
 import {
     BOOKING_WINDOW_DAYS,
@@ -450,7 +451,15 @@ export default function BookingForm() {
                                     type="tel"
                                     autoComplete="tel"
                                     placeholder="(555) 123-4567"
-                                    {...form.register("phone")}
+                                    {...form.register("phone", {
+                                        // Tidy the number into (xxx) xxx-xxxx once the person leaves the field
+                                        onBlur: (e) =>
+                                            form.setValue(
+                                                "phone",
+                                                formatPhone(e.target.value),
+                                                { shouldValidate: true },
+                                            ),
+                                    })}
                                     {...fieldProps("phone", errors.phone?.message)}
                                 />
                             </Field>

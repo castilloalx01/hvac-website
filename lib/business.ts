@@ -9,9 +9,10 @@ export const business = {
     hours: "Mon-Sat, 8:00 AM - 5:00 PM (closed Sunday)",
 };
 
-// "+15555555555" -> "(555) 555-5555"
+// "+15555555555" or "555.555.5555" -> "(555) 555-5555"
+// Anything that isn't 10 digits (or 11 starting with 1) is returned unchanged.
 export function formatPhone(phone: string): string {
-    const digits = phone.replace(/\D/g, "").slice(-10);
+    const digits = phone.replace(/\D/g, "").replace(/^1(?=\d{10}$)/, "");
     if (digits.length !== 10) return phone;
     return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
 }
