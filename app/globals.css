@@ -19,6 +19,41 @@ body {
   color: var(--foreground);
 }
 
+/*
+ * Guard the booking calendar (react-day-picker v10) against browser extensions
+ * that inject the old v8 stylesheet into every page. Those rules reuse the same
+ * class names (e.g. `.rdp-day { display: flex }`) and break the calendar grid.
+ * Prefixing with `.rdp-root` makes these win, restoring v10's own layout.
+ */
+.rdp-root .rdp-months {
+  flex-wrap: wrap;
+}
+
+.rdp-root .rdp-month {
+  margin: 0;
+}
+
+.rdp-root .rdp-caption_label {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.rdp-root .rdp-day {
+  display: table-cell;
+  overflow: visible;
+  box-sizing: border-box;
+  width: var(--rdp-day-width);
+  max-width: none;
+  height: var(--rdp-day-height);
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  vertical-align: middle;
+}
+
 /* Consistent, visible keyboard focus on every interactive element */
 @layer base {
   :focus-visible {
