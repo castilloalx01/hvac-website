@@ -188,6 +188,13 @@ body {
     animation: ken-burns 12s ease-in-out infinite alternate;
 }
 
+/* Reduced motion: hide the hero video so the still photo behind it shows instead */
+@media (prefers-reduced-motion: reduce) {
+    .hero-video {
+        display: none;
+    }
+}
+
 /* Icon effects (used by the inline SVG icons) */
 .icon-wiggle:hover,
 .group:hover .group-hover-wiggle {

@@ -73,14 +73,29 @@ export default function Home() {
             {/* Hero + emergency bar together fill the screen below the sticky navbar (~4rem tall) */}
             <div className="flex min-h-[calc(100svh-4rem)] flex-col">
                 <section className="relative flex flex-1 items-center overflow-hidden bg-neutral-950 text-white">
-                    {/* Background photo that slowly zooms and drifts (Ken Burns effect) */}
+                    {/* Still photo underneath: shows while the video loads, and for
+                        visitors who prefer reduced motion (the video is hidden for them).
+                        To go back to the old slow-zoom photo, delete the <video> below and
+                        add className "animate-ken-burns" to this Image. */}
                     <Image
                         src="/images/home/Horizontal-Apartments.webp"
                         alt=""
                         fill
                         priority
                         sizes="100vw"
-                        className="animate-ken-burns object-cover"
+                        className="object-cover"
+                    />
+                    {/* Background video (test): muted + playsInline are required for autoplay */}
+                    <video
+                        className="hero-video absolute inset-0 h-full w-full object-cover"
+                        src="/videos/hero_video.mp4"
+                        poster="/images/home/Horizontal-Apartments.webp"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="auto"
+                        aria-hidden="true"
                     />
                     {/* Dark overlay keeps the white text readable */}
                     <div
