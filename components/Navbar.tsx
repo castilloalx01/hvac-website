@@ -5,15 +5,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/data/navigation";
 import { business } from "@/lib/business";
+import Logo from "@/components/Logo";
 
 export default function Navbar() {
     const pathname = usePathname();
     const [open, setOpen] = useState(false);
 
+    // Desktop links get an underline that grows from the left on hover
     const linkClass = (href: string) =>
         pathname === href
             ? "text-red-700"
-            : "text-neutral-700 hover:text-red-600";
+            : "text-neutral-700 transition-colors hover:text-red-600";
 
     return (
         <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/90 backdrop-blur">
@@ -21,8 +23,14 @@ export default function Navbar() {
                 aria-label="Main"
                 className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3"
             >
-                <Link href="/" className="text-xl font-bold text-red-700">
-                    {business.name}
+                <Link
+                    href="/"
+                    className="group flex items-center gap-2.5 font-bold text-red-700"
+                >
+                    <Logo className="h-9 w-9 shrink-0 transition-transform duration-300 group-hover:scale-110" />
+                    <span className="text-base leading-tight sm:text-lg">
+                        {business.name}
+                    </span>
                 </Link>
                 <ul className="hidden gap-6 text-sm font-medium sm:flex">
                     {navLinks.map((l) => (
@@ -32,7 +40,11 @@ export default function Navbar() {
                                 aria-current={
                                     pathname === l.href ? "page" : undefined
                                 }
-                                className={linkClass(l.href)}
+                                className={`relative py-1 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:bg-red-600 after:transition-transform after:duration-300 hover:after:scale-x-100 ${
+                                    pathname === l.href
+                                        ? "after:scale-x-100"
+                                        : "after:scale-x-0"
+                                } ${linkClass(l.href)}`}
                             >
                                 {l.label}
                             </Link>
@@ -42,7 +54,7 @@ export default function Navbar() {
                 <div className="flex items-center gap-2">
                     <a
                         href={`tel:${business.phone}`}
-                        className="rounded-lg bg-yellow-400 text-black px-4 py-2 text-sm font-semibold hover:bg-yellow-300"
+                        className="rounded-lg bg-yellow-400 px-4 py-2 text-sm font-semibold text-black transition duration-200 hover:-translate-y-0.5 hover:bg-yellow-300 hover:shadow-md active:translate-y-0"
                     >
                         Call now
                     </a>
@@ -80,7 +92,7 @@ export default function Navbar() {
             {open && (
                 <ul
                     id="mobile-menu"
-                    className="border-t border-neutral-200 bg-white px-4 py-2 sm:hidden"
+                    className="animate-slide-down border-t border-neutral-200 bg-white px-4 py-2 sm:hidden"
                 >
                     {navLinks.map((l) => (
                         <li key={l.href}>

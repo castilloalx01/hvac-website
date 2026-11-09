@@ -1,4 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# True North Residential Services
+
+Website for True North Residential Services (heating and cooling): services, gallery, contact, and online appointment booking. Built with [Next.js](https://nextjs.org) (App Router), React, and Tailwind CSS v4.
+
+## Customizing the site
+
+| What | Where |
+| --- | --- |
+| Company name, phone, email, service area, hours, map location (`mapQuery`) | `lib/business.ts` |
+| Services, gallery photos, testimonials, nav links | `data/` |
+| Logo (navbar, footer, hero) | `components/Logo.tsx` (same artwork as the tab icon, `app/icon.svg`) |
+| Home page sections, hero photo, GIF section | `app/page.tsx` |
+| Home images (hero photo, GIF) | `public/images/home/` |
+
+### Animations
+
+- **Scroll reveals:** wrap content in `<Reveal variant="fade-up | fade-left | fade-right | fade-in" delay={ms}>` (`components/Reveal.tsx`). It animates once when scrolled into view and stays visible without JavaScript.
+- **Keyframes and effects** live in `app/globals.css`: the hero photo zoom (`ken-burns`, change its duration to adjust speed), logo `breathe`, floating gallery photos (`gallery-float-a/b`), `slide-down` for the mobile menu, and the pulse effects.
+- **Hover effects** (lift, shadow, sliding arrows, icon rotation) are Tailwind utility classes on the elements themselves.
+- All looping animations and reveals are turned off for visitors who prefer reduced motion.
+
+### Notes
+
+- The home page GIF (`journal-sq-gif.gif`) is about 10 MB. Converting it to a short looping video would make the page load much faster.
+- The service-area map is a keyless Google Maps embed. A transparent link over it opens the full map in Google Maps when clicked.
+- Stock photos are placeholders; replace them with the client's own and check each license.
 
 ## Getting Started
 

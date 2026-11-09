@@ -1,10 +1,12 @@
 // Business details shown across the site. Replace these placeholders with the client's real info.
 
 export const business = {
-    name: "CoolAir HVAC",
+    name: "True North Residential Services",
     phone: "+15555555555",
     email: "info@example.com",
-    serviceArea: "Springfield and surrounding towns within 30 miles",
+    serviceArea: "Manassas and surrounding towns within 30 miles",
+    // Center of the service-area map on the home page
+    mapQuery: "Manassas, VA",
     // Keep in sync with the booking hours in lib/slots.ts
     hours: "Mon-Sat, 8:00 AM - 5:00 PM (closed Sunday)",
 };

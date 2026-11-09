@@ -34,6 +34,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             suppressHydrationWarning
         >
             <body className="min-h-full flex flex-col">
+                {/* Without JavaScript the scroll reveals can't run, so keep content visible */}
+                <noscript>
+                    <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
+                </noscript>
                 <Navbar />
                 <main className="flex-1">{children}</main>
                 <Footer />
