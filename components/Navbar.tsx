@@ -54,7 +54,7 @@ export default function Navbar() {
                 <div className="flex items-center gap-2">
                     <a
                         href={`tel:${business.phone}`}
-                        className="rounded-lg bg-yellow-400 px-4 py-2 text-sm font-semibold text-black transition duration-200 hover:-translate-y-0.5 hover:bg-yellow-300 hover:shadow-md active:translate-y-0"
+                        className="shrink-0 whitespace-nowrap rounded-lg bg-yellow-400 px-3 py-2 text-sm font-semibold text-black transition sm:px-4 duration-200 hover:-translate-y-0.5 hover:bg-yellow-300 hover:shadow-md active:translate-y-0"
                     >
                         Call now
                     </a>

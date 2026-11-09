@@ -73,12 +73,11 @@ export default function Home() {
             {/* Hero + emergency bar together fill the screen below the sticky navbar (~4rem tall) */}
             <div className="flex min-h-[calc(100svh-4rem)] flex-col">
                 <section className="relative flex flex-1 items-center overflow-hidden bg-neutral-950 text-white">
-                    {/* Still photo underneath: shows while the video loads, and for
-                        visitors who prefer reduced motion (the video is hidden for them).
-                        To go back to the old slow-zoom photo, delete the <video> below and
-                        add className "animate-ken-burns" to this Image. */}
+                    {/* Placeholder underneath: the video's first frame (hero-poster.webp). It shows
+                        while the video loads, and for visitors who prefer reduced motion (the
+                        video is hidden for them). If you replace the video, re-extract this frame. */}
                     <Image
-                        src="/images/home/Horizontal-Apartments.webp"
+                        src="/images/home/hero-poster.webp"
                         alt=""
                         fill
                         priority
@@ -89,7 +88,6 @@ export default function Home() {
                     <video
                         className="hero-video absolute inset-0 h-full w-full object-cover"
                         src="/videos/hero_video.mp4"
-                        poster="/images/home/Horizontal-Apartments.webp"
                         autoPlay
                         muted
                         loop
@@ -139,10 +137,11 @@ export default function Home() {
 
                 <section aria-label="Emergency service" className="bg-red-700">
                     <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-2 px-4 py-4 text-center sm:flex-row sm:gap-4">
-                        <p className="flex items-center gap-2 font-medium text-white">
+                        <p className="font-medium text-white">
+                            {/* Inline dot: flows with the text so it stays beside the first word when wrapped */}
                             <span
                                 aria-hidden="true"
-                                className="animate-pulse-soft h-2.5 w-2.5 shrink-0 rounded-full bg-yellow-300"
+                                className="animate-pulse-soft mr-2 inline-block h-2.5 w-2.5 rounded-full bg-yellow-300 align-middle"
                             />
                             No heat or no AC? Same-day emergency service
                             available.
