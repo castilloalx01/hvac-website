@@ -173,7 +173,7 @@ export default function Home() {
                 <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-2">
                     <Reveal variant="fade-left">
                         <p className="text-sm font-semibold uppercase tracking-wider text-yellow-400">
-                            Residential buildings
+                            For Every Space
                         </p>
                         <h2 className="mt-2 text-3xl font-bold">
                             Comfort for the places people call home
