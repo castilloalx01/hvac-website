@@ -9,7 +9,7 @@ Must be rendered inside <Suspense> (it uses useSearchParams and the current date
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -82,7 +82,15 @@ const secondaryButton =
 const editButton =
     "text-sm font-medium text-red-600 hover:text-red-800 hover:underline";
 
+// With cacheComponents on, Next.js keeps visited pages alive, so the wizard would come back
+// with its old state and ignore a new ?service=. Keying on bfcacheId starts it fresh on every
+// link click (e.g. "Book now") while still restoring progress on browser back/forward.
 export default function BookingForm() {
+    const { bfcacheId } = useRouter();
+    return <BookingWizard key={bfcacheId} />;
+}
+
+function BookingWizard() {
     const searchParams = useSearchParams();
     const preselected = getService(searchParams.get("service"));
     const appointments = useAppointments();
